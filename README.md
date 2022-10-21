@@ -16,3 +16,28 @@ __/\\\______________/\\\_____________________________/\\\_______________________
       '-..-'|   ||   |
       '-..-'|_.-''-._|
 ```
+
+# Usage 
+
+there really is no complex usage for this but there are some general use cases. In order to start writing/reading data to and from a process you have to first include the .hpp file then check the process or initate it.
+
+```cpp
+	auto MEMZ = Memory_Manager{
+		"Process.exe"
+	};
+```
+
+once you are finished starting the memory manager you can begin loading memory modules such as dll files and loading them to be written to such as the following example 
+
+```cpp
+	const auto Kernel = MEMZ.Load_Module_Address("kernel32.dll");
+```
+
+then you can use the read and write functions to read and or write memory to the loaded process for example 
+
+```cpp
+		const auto Manager = MEMZ.R<std::uintptr_t>(Kernel + 0x35C4);
+```
+
+
+
